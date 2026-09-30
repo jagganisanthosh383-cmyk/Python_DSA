@@ -1,222 +1,156 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
-
-
-class LinkedList:
-    def __init__(self):
-        self.head = None
-
-    # 1. Insert at Beginning
-    def insert_beginning(self, data):
-        new_node = Node(data)
-        new_node.next = self.head
-        self.head = new_node
-
-    # 2. Insert at End
-    def insert_end(self, data):
-        new_node = Node(data)
-
-        if self.head is None:
-            self.head = new_node
-            return
-
-        temp = self.head
-
-        while temp.next is not None:
-            temp = temp.next
-
-        temp.next = new_node
-
-    # 3. Insert at Specific Position
-    def insert_position(self, data, position):
-        new_node = Node(data)
-
-        if position == 1:
-            new_node.next = self.head
-            self.head = new_node
-            return
-
-        temp = self.head
-
-        for i in range(1, position - 1):
-            if temp is None:
-                print("Position out of range")
-                return
-            temp = temp.next
-
-        if temp is None:
-            print("Position out of range")
-            return
-
-        new_node.next = temp.next
-        temp.next = new_node
-
-    # 4. Delete from Beginning
-    def delete_beginning(self):
-        if self.head is None:
-            print("Linked List is empty")
-            return
-
-        self.head = self.head.next
-
-    # 5. Delete from End
-    def delete_end(self):
-        if self.head is None:
-            print("Linked List is empty")
-            return
-
-        # Only one node
-        if self.head.next is None:
-            self.head = None
-            return
-
-        temp = self.head
-
-        while temp.next.next is not None:
-            temp = temp.next
-
-        temp.next = None
-
-    # 6. Delete from Specific Position
-    def delete_position(self, position):
-        if self.head is None:
-            print("Linked List is empty")
-            return
-
-        if position == 1:
-            self.head = self.head.next
-            return
-
-        temp = self.head
-
-        for i in range(1, position - 1):
-            if temp.next is None:
-                print("Position out of range")
-                return
-            temp = temp.next
-
-        if temp.next is None:
-            print("Position out of range")
-            return
-
-        temp.next = temp.next.next
-
-    # 7. Search an Element
-    def search(self, key):
-        temp = self.head
-        position = 1
-
-        while temp is not None:
-            if temp.data == key:
-                print("Element found at position:", position)
-                return
-
-            temp = temp.next
-            position += 1
-
-        print("Element not found")
-
-    # 8. Display / Traverse
-    def display(self):
-        if self.head is None:
-            print("Linked List is empty")
-            return
-
-        temp = self.head
-
-        while temp is not None:
-            print(temp.data, end=" -> ")
-            temp = temp.next
-
-        print("None")
-
-    # 9. Count Nodes
-    def count_nodes(self):
-        count = 0
-        temp = self.head
-
-        while temp is not None:
-            count += 1
-            temp = temp.next
-
-        print("Number of nodes:", count)
-
-    # 10. Reverse Linked List
-    def reverse(self):
-        previous = None
-        current = self.head
-
-        while current is not None:
-            next_node = current.next
-            current.next = previous
-            previous = current
-            current = next_node
-
-        self.head = previous
-
-
-# Main Program
-
-ll = LinkedList()
-
-while True:
-
-    print("\n===== LINKED LIST =====")
-    print("1. Insert at Beginning")
-    print("2. Insert at End")
-    print("3. Insert at Specific Position")
-    print("4. Delete from Beginning")
-    print("5. Delete from End")
-    print("6. Delete from Specific Position")
-    print("7. Search an Element")
-    print("8. Display")
-    print("9. Count Nodes")
-    print("10. Reverse Linked List")
-    print("11. Exit")
-
-    choice = int(input("Enter your choice: "))
-
-    if choice == 1:
-        data = int(input("Enter data: "))
-        ll.insert_beginning(data)
-
-    elif choice == 2:
-        data = int(input("Enter data: "))
-        ll.insert_end(data)
-
-    elif choice == 3:
-        data = int(input("Enter data: "))
-        position = int(input("Enter position: "))
-        ll.insert_position(data, position)
-
-    elif choice == 4:
-        ll.delete_beginning()
-
-    elif choice == 5:
-        ll.delete_end()
-
-    elif choice == 6:
-        position = int(input("Enter position: "))
-        ll.delete_position(position)
-
-    elif choice == 7:
-        key = int(input("Enter element to search: "))
-        ll.search(key)
-
-    elif choice == 8:
-        ll.display()
-
-    elif choice == 9:
-        ll.count_nodes()
-
-    elif choice == 10:
-        ll.reverse()
-
-    elif choice == 11:
-        print("Program ended.")
+  def __init__(self,data):
+    self.data=data
+    self.next=None
+class linkedlist:
+  def __init__(self):
+    self.head=None 
+    self.size=0 
+  def add(self,data):
+    if self.head==None:
+      self.head=Node(data)
+      self.size+=1
+      return
+    cN=self.head
+    while cN.next is not None:
+      cN=cN.next
+    cN.next=Node(data)
+    self.size+=1
+  def traverse(self):
+    if self.head==None:
+      print()
+      return
+    cN=self.head
+    while cN.next is not None:
+      print(cN.data,end="->")
+      cN=cN.next
+    print(cN.data,cN.next)
+  def search(self,data):
+    cN=self.head
+    i=0
+    while cN.next is not None:
+      if cN.data==data:
+        print(f"data is at {i} found")
+        return
+      i=i+1
+      cN=cN.next
+      if cN.data==data:
+        print(f"data is at {i} found")
+        return
+    print("data is not found")
+  def delete(self,data):
+    cN=self.head
+    if self.head==None:
+      return False
+    if cN.data==data:
+      self.head=cN.next
+      self.size-=1
+    while cN.next is not None:
+      if cN.next.data==data:
+        cN.next=cN.next.next
+        self.size-=1
+        return True 
+      cN=cN.next
+    self.traverse()
+  def length(self):
+    print(self.size)
+  def insertatbeg(self,data):
+    obj=Node(data)
+    obj.next=self.head
+    self.head=obj
+    self.traverse()
+  def deletelast(self):
+    cN = self.head
+    while cN.next.next is not None:
+        cN = cN.next
+    cN.next = None
+    self.size -= 1
+    self.traverse()
+  def insertatposition(self,data,position):
+    if self.head is None:
+      return
+    if position<0 and position>self.length():
+      print("invalid position")
+      return
+    if position ==0:
+      self.insertatbeg(data)
+      return
+    if position==self.length():
+      self.add(data)
+      return
+    cn=self.head
+    ind=0
+    while cn.next.next is not None:
+      if ind+1==position:
         break
+      cn=cn.next
+    obj=Node(data)
+    obj.next=cn.next
+    cn.next=obj
+    self.size+=1
+    self.traverse()
+  def insertafter(self,data,targetdata):
+    if self.head is None:
+      return
+    cn=self.head
+    while cn.next.next is not None:
+      if cn.data==data:
+        break
+      cn=cn.next
+    obj=Node(targetdata)
+    obj.next=cn.next
+    cn.next=obj
+    self.size+=1
+    self.traverse()
+  def deletebyvalue(self,data):
+    if self.head is not None:
+      return
+    if self.head.next is None:
+      if self.head.data==data:
+        self.head=None
+    cn=self.head
+    while cn.next is not None:
+      if cn.next.data==data:
+        cn.next=cn.next.next
+      cn=cn.next
+    self.size-=1
+    self.traverse()
+  def delat(self,position):
+    if self.head is None:
+      return
+    if position<0 and position>self.length():
+      print("invalid position")
+      return
+    if position ==0:
+      self.head=self.head.next
 
-    else:
-        print("Invalid choice")
+      return
+    if position==self.length():
+      self.add(data)
+      return
+    cn=self.head
+    ind=0
+    while cn.next.next is not None:
+      if ind==position:
+        break
+      cn=cn.next
+    cn.next=cn.next.next
+    self.size-=1
+    self.traverse()
+    
+ll=linkedlist()
+ll.add(10)
+ll.add(20)
+ll.add(30)
+ll.add(44)
+ll.add(7667)
+ll.traverse()
+ll.search(10)
+ll.delete(10)
+ll.length()
+ll.insertatbeg(90)
+ll.deletelast()
+ll.insertatposition(100,3)
+ll.insertafter(100,200)
+ll.deletebyvalue(100)
+ll.delat(3)
