@@ -1,139 +1,390 @@
-# Array Operations in Python - DSA
+#1st problem
+'''def sumofArray(a):
+  sum=0
+  for i in a:
+    sum=sum+i
+  return sum
 
-arr = []
+n=int(input())
+a=list(map(int,input().split()))
 
-# 1. Create Array
-n = int(input("Enter number of elements: "))
-
-for i in range(n):
-    value = int(input("Enter element: "))
-    arr.append(value)
-
-
-# 2. Display / Traverse
-def display():
-    print("Array:", arr)
+print(sumofArray(a))'''
 
 
-# 3. Insert Element
-def insert():
-    value = int(input("Enter element: "))
-    position = int(input("Enter position: "))
+#2nd problem
+'''def search(a,el):
+  c=0
+  for i in a:
+    if el==i:
+      c=c+1
+  return c
 
-    if position < 0 or position > len(arr):
-        print("Invalid position")
+n=int(input())
+a=list(map(int,input().split()))
+ele=int(input())
+
+print(search(a,ele))'''
+
+
+#3rd problem
+'''n=int(input())
+a=list(map(int,input().split()))
+
+sumvalue=0
+
+for i in a:
+  sumvalue=sumvalue+i
+
+res=sumvalue/n
+
+print(res)
+print(f'{res:.2f}')'''
+
+
+#4th problem
+'''def remove(string):
+  result=""
+
+  for ch in string:
+    if ch!='a' and ch!='e' and ch!='i' and ch!='o' and ch!='u':
+      result=result+ch
+
+  return result
+
+string=input()
+
+result=remove(string)
+
+print(result)'''
+
+
+#5th problem
+'''def traversal(a):
+  print('[',end="")
+
+  for i in range(len(a)-1):
+    print(a[i],end=", ")
+
+  print(f'{a[-1]}]')
+
+a=list(map(int,input().split()))
+
+traversal(a)'''
+
+
+#6th problem - insertion of array
+'''def insert(ar,el,ind):
+  ar2=[0 for i in range(len(ar)+1)]
+
+  for i in range(ind):
+    ar2[i]=ar[i]
+
+  for i in range(ind,len(ar)):
+    ar2[i+1]=ar[i]
+
+  ar2[ind]=el
+
+  return ar2
+
+n=int(input())
+a=list(map(int,input().split()))[:n]
+
+print(a)
+
+el=int(input())
+ind=int(input())
+
+a=insert(a,el,ind)
+
+print(a)'''
+
+
+#7th problem - deletion of array
+'''def delete(ar,ind):
+  ar2=[0 for i in range(len(ar)-1)]
+
+  for i in range(ind):
+    ar2[i]=ar[i]
+
+  for i in range(ind,len(ar)-1):
+    ar2[i]=ar[i+1]
+
+  return ar2
+
+n=int(input())
+a=list(map(int,input().split()))[:n]
+
+print(a)
+
+ind=int(input())
+
+a=delete(a,ind)
+
+print(a)'''
+
+
+#8th problem - right rotation
+'''def rotation(a,key):
+  ar=[0 for i in range(len(a))]
+  ind=0
+
+  key=key%len(a)
+
+  for i in range(len(a)-key,len(a)):
+    ar[ind]=a[i]
+    ind=ind+1
+
+  for i in range(len(a)-key):
+    ar[ind]=a[i]
+    ind=ind+1
+
+  return ar
+
+n=int(input())
+a=list(map(int,input().split()))[:n]
+
+print(a)
+
+key=int(input())
+
+a=rotation(a,key)
+
+print(a)'''
+
+
+#9th problem - left rotation
+'''def rotation(a,key):
+  ar=[0 for i in range(len(a))]
+  ind=0
+
+  key=key%len(a)
+
+  for i in range(key,len(a)):
+    ar[ind]=a[i]
+    ind=ind+1
+
+  for i in range(key):
+    ar[ind]=a[i]
+    ind=ind+1
+
+  return ar
+
+n=int(input())
+a=list(map(int,input().split()))[:n]
+
+print(a)
+
+key=int(input())
+
+a=rotation(a,key)
+
+print(a)'''
+
+
+#10th problem - sliding window
+'''def maxsubarray(a,k):
+  sum=0
+
+  for i in range(k):
+    sum=sum+a[i]
+
+  max=sum
+
+  for i in range(k,len(a)):
+    sum=sum+a[i]-a[i-k]
+
+    if sum>max:
+      max=sum
+
+  return max
+
+a=list(map(int,input().split()))
+k=int(input())
+
+print(maxsubarray(a,k))'''
+
+
+#11th problem - linear search
+'''def linearsearch(a,ele):
+  ar=[]
+
+  for i in range(len(a)):
+    if a[i]==ele:
+      ar.append(i)
+
+  return ar
+
+a=list(map(int,input().split()))
+ele=int(input())
+
+print(linearsearch(a,ele))'''
+
+
+#12th problem - remove duplicates
+'''def remove_duplicates(arr):
+  ar=[]
+
+  for i in arr:
+    if i not in ar:
+      ar.append(i)
+
+  return ar
+
+a=list(map(int,input().split()))
+
+print(remove_duplicates(a))'''
+
+
+#13th problem - container with water
+'''def max_water_container(heights):
+  left=0
+  right=len(heights)-1
+  max_water=0
+
+  while left<right:
+    width=right-left
+    height=min(heights[left],heights[right])
+
+    water=width*height
+
+    if water>max_water:
+      max_water=water
+
+    if heights[left]<heights[right]:
+      left=left+1
     else:
-        arr.insert(position, value)
-        print("Element inserted successfully")
+      right=right-1
+
+  return max_water
+
+a=list(map(int,input().split()))
+
+print(max_water_container(a))'''
 
 
-# 4. Delete Element
-def delete():
-    position = int(input("Enter position to delete: "))
+#14th problem - sum of sub array
+'''def max_sum_subarray(arr,k):
+  sum=0
 
-    if position < 0 or position >= len(arr):
-        print("Invalid position")
-    else:
-        deleted = arr.pop(position)
-        print("Deleted element:", deleted)
+  for i in range(k):
+    sum=sum+arr[i]
 
+  max=sum
 
-# 5. Search Element
-def search():
-    value = int(input("Enter element to search: "))
+  for i in range(k,len(arr)):
+    sum=sum-arr[i-k]+arr[i]
 
-    if value in arr:
-        print("Element found at index:", arr.index(value))
-    else:
-        print("Element not found")
+    if sum>max:
+      max=sum
 
+  return max
 
-# 6. Update Element
-def update():
-    position = int(input("Enter position: "))
+a=list(map(int,input().split()))
+k=int(input())
 
-    if position < 0 or position >= len(arr):
-        print("Invalid position")
-    else:
-        value = int(input("Enter new value: "))
-        arr[position] = value
-        print("Element updated successfully")
+print(max_sum_subarray(a,k))'''
 
 
-# 7. Maximum
-def maximum():
-    if len(arr) == 0:
-        print("Array is empty")
-    else:
-        print("Maximum:", max(arr))
+#15th problem - smallest subarray
+'''def min_subarray_with_sum(arr,target):
+  min_length=len(arr)+1
+  sum=0
+  start=0
+
+  for end in range(len(arr)):
+    sum=sum+arr[end]
+
+    while sum>=target:
+      length=end-start+1
+
+      if length<min_length:
+        min_length=length
+
+      sum=sum-arr[start]
+      start=start+1
+
+  if min_length==len(arr)+1:
+    return 0
+
+  return min_length
+
+a=list(map(int,input().split()))
+target=int(input())
+
+print(min_subarray_with_sum(a,target))'''
 
 
-# 8. Minimum
-def minimum():
-    if len(arr) == 0:
-        print("Array is empty")
-    else:
-        print("Minimum:", min(arr))
+#16th problem - prefix array
+'''def prefixarray(a):
+  ar=[0 for i in range(len(a))]
+  s=0
+
+  for i in range(len(a)):
+    s=s+a[i]
+    ar[i]=s
+
+  return ar
+
+a=list(map(int,input().split()))
+
+print(prefixarray(a))'''
 
 
-# 9. Reverse
-def reverse():
-    arr.reverse()
-    print("Array reversed")
+#17th problem - range sum
+'''def prefixarray(a):
+  ar=[0 for i in range(len(a))]
+  s=0
+
+  for i in range(len(a)):
+    s=s+a[i]
+    ar[i]=s
+
+  return ar
 
 
-# 10. Count Elements
-def count():
-    print("Number of elements:", len(arr))
+def range_sum(a,st,end):
+  if st==0:
+    return a[end]
+
+  return a[end]-a[st-1]
 
 
-# Menu
-while True:
+a=list(map(int,input().split()))
 
-    print("\n========== ARRAY OPERATIONS ==========")
-    print("1. Display")
-    print("2. Insert")
-    print("3. Delete")
-    print("4. Search")
-    print("5. Update")
-    print("6. Maximum")
-    print("7. Minimum")
-    print("8. Reverse")
-    print("9. Count")
-    print("10. Exit")
+prefix=prefixarray(a)
 
-    choice = int(input("Enter your choice: "))
+print(prefix)
 
-    if choice == 1:
-        display()
+st=int(input())
+end=int(input())
 
-    elif choice == 2:
-        insert()
+print(range_sum(prefix,st,end))'''
 
-    elif choice == 3:
-        delete()
 
-    elif choice == 4:
-        search()
+#18th problem - sub array sum equals target
+def sumarray(a,k,target):
+  s=0
 
-    elif choice == 5:
-        update()
+  if k<=0 or k>len(a):
+    return -1
 
-    elif choice == 6:
-        maximum()
+  for i in range(k):
+    s=s+a[i]
 
-    elif choice == 7:
-        minimum()
+  if s==target:
+    return [a[i] for i in range(k)]
 
-    elif choice == 8:
-        reverse()
+  for i in range(k,len(a)):
+    s=s+a[i]-a[i-k]
 
-    elif choice == 9:
-        count()
+    if s==target:
+      return [a[j] for j in range(i-k+1,i+1)]
 
-    elif choice == 10:
-        print("Program ended.")
-        break
+  return -1
 
-    else:
-        print("Invalid choice")
+
+a=list(map(int,input().split()))
+k=int(input())
+target=int(input())
+
+print(sumarray(a,k,target))
