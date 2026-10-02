@@ -1,42 +1,133 @@
 class Queue:
-  def __init__(self,cap=5):
-    self._a=[None for _ in range(cap)]
-    self._front=0
-    self._rare=-1
-    self._c=0
-  def peek(self):
-    if self._c==0:
-      return "no elements"
-    return self._a[self._front]
+  def __init__(self):
+    self.queue=[]
+    self.size=0
+
   def enqueue(self,data):
-    if self._c==len(self._a):
-      print('overflow')
-      return
-    self._a[self._c]=data
-    self._c+=1
-  def range(self):
-    return self._a[self._c-1]
+    self.queue.append(data)
+    self.size+=1
+
   def dequeue(self):
-    if self._c==0:
-      print('underflow')
+    if self.size==0:
+      print("queue is empty")
       return
-    ar=[None for _ in range(len(self._a))]
-    for i in range(1,self._c):
-      ar[i-1]=self._a[i]
-    self._c-=1
-    temp=self._a[self._front]
-    self._a=ar
-    return temp
+    data=self.queue[0]
+    for i in range(self.size-1):
+      self.queue[i]=self.queue[i+1]
+    self.queue.pop()
+    self.size-=1
+    print(data)
+
+  def peek(self):
+    if self.size==0:
+      print("queue is empty")
+      return
+    print(self.queue[0])
+
+  def traverse(self):
+    if self.size==0:
+      print("queue is empty")
+      return
+    for i in range(self.size):
+      print(self.queue[i],end=" ")
+    print()
+
+  def search(self,data):
+    for i in range(self.size):
+      if self.queue[i]==data:
+        print(f"data is at {i} found")
+        return
+    print("data is not found")
+
+  def length(self):
+    print(self.size)
+
+  def insertatbeg(self,data):
+    self.queue.append(0)
+
+    for i in range(self.size,0,-1):
+      self.queue[i]=self.queue[i-1]
+
+    self.queue[0]=data
+    self.size+=1
+
+  def insertatposition(self,data,position):
+    if position<0 or position>self.size:
+      print("invalid position")
+      return
+
+    self.queue.append(0)
+
+    for i in range(self.size,position,-1):
+      self.queue[i]=self.queue[i-1]
+
+    self.queue[position]=data
+    self.size+=1
+
+  def deletebyvalue(self,data):
+    if self.size==0:
+      print("queue is empty")
+      return
+
+    for i in range(self.size):
+      if self.queue[i]==data:
+        for j in range(i,self.size-1):
+          self.queue[j]=self.queue[j+1]
+
+        self.queue.pop()
+        self.size-=1
+        return
+
+    print("data is not found")
+
+  def deleteat(self,position):
+    if self.size==0:
+      print("queue is empty")
+      return
+
+    if position<0 or position>=self.size:
+      print("invalid position")
+      return
+
+    for i in range(position,self.size-1):
+      self.queue[i]=self.queue[i+1]
+
+    self.queue.pop()
+    self.size-=1
+
+  def clear(self):
+    self.queue=[]
+    self.size=0
 
 
+q=Queue()
 
+q.enqueue(10)
+q.enqueue(20)
+q.enqueue(30)
+q.enqueue(40)
+q.enqueue(50)
 
+q.traverse()
 
-que=Queue()
-que.enqueue(10)
-que.enqueue(20)
-que.enqueue(30)
-que.enqueue(40)
-que.dequeue()
-print(que.peek())
-print(que.range())
+q.peek()
+
+q.search(30)
+
+q.dequeue()
+
+q.length()
+
+q.insertatbeg(5)
+q.traverse()
+
+q.insertatposition(25,2)
+q.traverse()
+
+q.deletebyvalue(25)
+q.traverse()
+
+q.deleteat(2)
+q.traverse()
+
+q.length()
