@@ -1,4 +1,5 @@
-#1st problem
+#1st problem - sum of array
+
 '''def sumofArray(a):
   sum=0
   for i in a:
@@ -11,7 +12,8 @@ a=list(map(int,input().split()))
 print(sumofArray(a))'''
 
 
-#2nd problem
+#2nd problem - search
+
 '''def search(a,el):
   c=0
   for i in a:
@@ -26,7 +28,8 @@ ele=int(input())
 print(search(a,ele))'''
 
 
-#3rd problem
+#3rd problem - average
+
 '''n=int(input())
 a=list(map(int,input().split()))
 
@@ -41,7 +44,8 @@ print(res)
 print(f'{res:.2f}')'''
 
 
-#4th problem
+#4th problem - remove vowels
+
 '''def remove(string):
   result=""
 
@@ -58,7 +62,8 @@ result=remove(string)
 print(result)'''
 
 
-#5th problem
+#5th problem - traversal
+
 '''def traversal(a):
   print('[',end="")
 
@@ -73,6 +78,7 @@ traversal(a)'''
 
 
 #6th problem - insertion of array
+
 '''def insert(ar,el,ind):
   ar2=[0 for i in range(len(ar)+1)]
 
@@ -100,6 +106,7 @@ print(a)'''
 
 
 #7th problem - deletion of array
+
 '''def delete(ar,ind):
   ar2=[0 for i in range(len(ar)-1)]
 
@@ -124,6 +131,7 @@ print(a)'''
 
 
 #8th problem - right rotation
+
 '''def rotation(a,key):
   ar=[0 for i in range(len(a))]
   ind=0
@@ -153,6 +161,7 @@ print(a)'''
 
 
 #9th problem - left rotation
+
 '''def rotation(a,key):
   ar=[0 for i in range(len(a))]
   ind=0
@@ -182,6 +191,7 @@ print(a)'''
 
 
 #10th problem - sliding window
+
 '''def maxsubarray(a,k):
   sum=0
 
@@ -205,6 +215,7 @@ print(maxsubarray(a,k))'''
 
 
 #11th problem - linear search
+
 '''def linearsearch(a,ele):
   ar=[]
 
@@ -221,6 +232,7 @@ print(linearsearch(a,ele))'''
 
 
 #12th problem - remove duplicates
+
 '''def remove_duplicates(arr):
   ar=[]
 
@@ -236,6 +248,7 @@ print(remove_duplicates(a))'''
 
 
 #13th problem - container with water
+
 '''def max_water_container(heights):
   left=0
   right=len(heights)-1
@@ -263,6 +276,7 @@ print(max_water_container(a))'''
 
 
 #14th problem - sum of sub array
+
 '''def max_sum_subarray(arr,k):
   sum=0
 
@@ -286,6 +300,7 @@ print(max_sum_subarray(a,k))'''
 
 
 #15th problem - smallest subarray
+
 '''def min_subarray_with_sum(arr,target):
   min_length=len(arr)+1
   sum=0
@@ -315,6 +330,7 @@ print(min_subarray_with_sum(a,target))'''
 
 
 #16th problem - prefix array
+
 '''def prefixarray(a):
   ar=[0 for i in range(len(a))]
   s=0
@@ -331,6 +347,7 @@ print(prefixarray(a))'''
 
 
 #17th problem - range sum
+
 '''def prefixarray(a):
   ar=[0 for i in range(len(a))]
   s=0
@@ -362,6 +379,7 @@ print(range_sum(prefix,st,end))'''
 
 
 #18th problem - sub array sum equals target
+
 def sumarray(a,k,target):
   s=0
 
